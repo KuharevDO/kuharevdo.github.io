@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Регистрация на форум</title>
+        <link rel="stylesheet" href="css/nado.css">
+        <style>
+            body {
+              background-image: url('png/фон2.jpg');
+              background: size 100%;
+            }
+            form {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            max-width: 400px;
+            margin: 0 auto;
+            }
+            input, select {
+            padding: 10px;
+            margin-bottom: 10px;
+            width: 100%;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            }
+            input[type="submit"] {
+            background-color: #ce7b0f;
+            color: white;
+            cursor: pointer;
+            }
+            input[type="submit"]:hover {
+            background-color: #45a049;
+            }
+        </style>    
+    </head>
+    <body>
+        <FORM id="form1" style="display: block;">
+        <h1 class="zagolovok">Форма регистрации участников конференции</h1>
+        <p class="gjlpfujkjdjr">Для принятия участия в конференции необходимо заполнить форму</p>
+        <p>
+            <b>Фамилия <b class="nado">*</b></b>
+            <input type="text" name="Familia" placeholder="Введите фамилию" required pattern="[А-Яа-яЁё]{0,100}" id="Familia">
+        </p>
+        <p>
+            <b>Имя <b class="nado">*</b></b>
+            <input type="text" name="Imia" placeholder="Введите имя" required pattern="[А-Яа-яЁё]{0,100}">
+        </p>
+        <P>
+            <b>Отчество <b class="nado">*</b></b>
+            <input type="text" name="Otchestvo" placeholder="Введите отчество" required pattern="[А-Яа-яЁё]{0,100}">
+        </P>
+        <p>
+            <b>Дата рождения</b></b>
+            <input type="date" name="Data">
+        </p>
+        <p>
+            <b>Котакный номер телефона <b class="nado">*</b></b>
+            <input type="tel" name="phone" placeholder="+71234567890" required pattern="[\+7]\d{11}">
+        </p>
+        <p>
+            <b>Адресс эллектронной почты <b class="nado">*</b></b>
+            <input type="email" name="email" placeholder="Введите почту" required>
+        </p>
+        <p>
+            <b>Тема конференции <b class="nado">*</b></b>
+            <select name="tema" id="Тема" required>
+                <option value="">Выберите тему</option>
+                <option value="c1">Математика</option>
+                <option value="c1">Физика</option>
+                <option value="c1">Информатика</option>
+            </select>
+        </p>
+            <b>
+            <label class="checkbox-container"> Доклад</label>
+            <input type="checkbox" name="doklad" id="checkbox" onclick="checkFuncton()">
+            <span class="checkmark"></span>
+            <input type="text" id="text" style="display:none" placeholder="Введите тему доклада">
+            <script src="js/doclad.js"></script>
+            </b>
+        <input type="submit" name="send" value="Отправить" class="send" id="send">
+    </FORM>
+</html>

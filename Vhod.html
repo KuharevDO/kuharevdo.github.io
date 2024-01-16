@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Авторизация</title>
+        <link rel="stylesheet" href="css/nado.css">
+        <style>
+            body {
+              background-image: url('png/фон2.jpg');
+              background: size 100%;
+            }
+            form {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            max-width: 400px;
+            margin: 0 auto;
+            }
+            input, select {
+            padding: 10px;
+            margin-bottom: 10px;
+            width: 100%;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            }
+            button{
+                padding: 10px;
+                margin-bottom: 10px;
+                width: 100%;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                box-sizing: border-box;
+            }
+            button[type="submit"] {
+            background-color: #ce7b0f;
+            color: white;
+            cursor: pointer;
+            }
+            button[type="submit"]:hover {
+            background-color: #45a049;
+            }
+        </style>   
+    </head>
+    <body>
+        <form>
+            <p>
+            <label for="username" class="ntrcnfdnjhbkjuby">Логин:</label>
+            <input id="username" class="username" type="text" name="username" minlength="3" maxlength="20" required>
+            </p>
+            <p>
+            <label for="password" class="ntrcnfdnjhbkjuby">Пароль:</label>
+            <input id="password" class="password" type="password" name="password" minlength="8" maxlength="20" required>
+            </p>
+            <p class="ntrcnfdnjhbkjuby">Запомнить данные
+            <input type="checkbox" name="save" id="save">
+            </p>
+            <p id="submitVhod">
+            <button type="submit">Войти</button>
+            </p>
+        </form>
+    </body>
+</html>

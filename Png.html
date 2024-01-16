@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Фотогаллерея</title>
+        <link rel="stylesheet" href="css/nado.css">
+        <style>
+            body {
+              background-image: url('png/фон3.jpg');
+              background: size 10%;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1 class="ajnjufkkthtz">Фотогалерея</h1>
+           <div class="img-container">
+            <div class="img">
+                <img src="png/1.jpg">
+            </div>
+            <div class="img">
+                <img src="png/2.jpg">
+            </div>
+            <div class="img">
+                <img src="png/3.jpg">
+            </div>
+            <div class="img">
+                <img src="png/4.jpg">
+            </div>
+            <div class="img">
+                <img src="png/5.jpg">
+            </div>
+            <div class="img">
+                <img src="png/6.jpg">
+            </div>
+           </div>
+           <div class="pop-up">
+            <span>&times;</span>
+            <img src="img/4.jpg" alt="">
+           </div>
+        </div>
+        <script>
+            document.querySelectorAll('.img-container img').forEach(img =>{
+                img.onclick = () => {
+                    document.querySelector('.pop-up').style.display = 'block';
+                    document.querySelector('.pop-up img').src = img.getAttribute('src');
+                }
+            });
+            document.querySelector('.pop-up span').onclick = () => {
+            document.querySelector('.pop-up').style.display = 'none'; 
+            }
+        </script>
+    </body>
+</html>
