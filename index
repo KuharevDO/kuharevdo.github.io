@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Интернет-магазин электротехники</title>
+</head>
+<body>
+<h1>Каталог товаров</h1>
+<ul>
+{% for product in products %}
+    <li>
+        {{ product.name }} - {{ product.price }} руб.
+        <a href="{{ url_for('add_to_cart', product_id=product.id) }}">Добавить в корзину</a>
+    </li>
+{% endfor %}
+</ul>
+<a href="{{ url_for('view_cart') }}">Перейти в корзину</a>
+</body>
+</html>
