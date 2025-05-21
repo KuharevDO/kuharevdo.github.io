@@ -1,0 +1,63 @@
+from flask import Flask, render_template, request, redirect, url_for, session
+
+app = Flask(__name__)
+app.secret_key = 'your_secret_key'
+
+# Пример товаров
+products = [
+    {'id': 1, 'name': 'Отвертка электрика', 'price': 500},
+    {'id': 2, 'name': 'Мультиметр', 'price': 1500},
+    {'id': 3, 'name': 'Паяльник', 'price': 2000},
+    {'id': 4, 'name': 'Блок питания', 'price': 3000},
+]
+
+# Инициализация корзины
+@app.before_request
+def before_request():
+    if 'cart' not in session:
+        session['cart'] = []
+
+@app.route('/')
+def index():
+    return render_template('index.html', products=products)
+
+@app.route('/add/<int:product_id>')
+def add_to_cart(product_id):
+    # Найти товар по ID
+    product = next((item for item in products if item['id'] == product_id), None)
+    if product:
+        session['cart'].append(product)
+        session.modified = True
+    return redirect(url_for('index'))
+
+@app.route('/cart')
+def view_cart():
+    cart = session.get('cart', [])
+    total = sum(item['price'] for item in cart)
+    return render_template('cart.html', cart=cart, total=total)
+
+@app.route('/remove/<int:product_id>')
+def remove_from_cart(product_id):
+    cart = session.get('cart', [])
+    # Удалить первый найденный товар с таким ID
+    for i, item in enumerate(cart):
+        if item['id'] == product_id:
+            del cart[i]
+            break
+    session['cart'] = cart
+    session.modified = True
+    return redirect(url_for('view_cart'))
+
+@app.route('/checkout', methods=['GET', 'POST'])
+def checkout():
+    if request.method == 'POST':
+        # Обработка формы заказа (например, сохранение данных)
+        session.pop('cart', None)
+        return render_template('thank_you.html')
+    else:
+        cart = session.get('cart', [])
+        total = sum(item['price'] for item in cart)
+        return render_template('checkout.html', cart=cart, total=total)
+
+if __name__ == '__main__':
+    app.run(debug=True)
